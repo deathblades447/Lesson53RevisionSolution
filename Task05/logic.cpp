@@ -46,12 +46,29 @@ void get_last_local_minimum(int** matrix, int n, int m, int* ii, int* jj) {
 		for (int i = n - 2; i > 0; i--)
 		{
 			for (int j = m - 2; j > 0; j--) {
+				if (matrix[i][m - 1] < matrix[i][m - 2] &&
+					matrix[i][m - 1] < matrix[i - 1][m - 1] &&
+					matrix[i][m - 1] < matrix[i + 1][m - 1]){
+					*ii = i + 1;
+					*jj = m;
+					return;
+				}
+
 				if (matrix[i][j] < matrix[i][j - 1] &&
 					matrix[i][j] < matrix[i][j + 1] &&
 					matrix[i][j] < matrix[i - 1][j] &&
 					matrix[i][j] < matrix[i + 1][j]) {
 					*ii = i + 1;
 					*jj = j + 1;
+					return;
+
+					if (matrix[i][0] < matrix[i][1] &&
+						matrix[i][0] < matrix[i - 1][0] &&
+						matrix[i][0] < matrix[i + 1][0]) {
+						*ii = i + 1;
+						*jj = m;
+						return;
+					}
 				}
 			}
 		}
@@ -84,6 +101,9 @@ void get_last_local_minimum(int** matrix, int n, int m, int* ii, int* jj) {
 			*ii = n;
 			*jj = 1;
 			return;
+		}
+		else {
+			///....
 		}
 	}
 }
