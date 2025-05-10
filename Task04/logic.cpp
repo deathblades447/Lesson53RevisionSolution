@@ -19,7 +19,7 @@ int get_extreme_value(int** matrix,int n,int m,bool type) {
 			}
 		}
 	}
-
+	return extreme;
 }
 
 bool is_extreme_value(int** matrix, int n, int column,int min,int max) {
